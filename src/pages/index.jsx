@@ -25,7 +25,7 @@ export function Index() {
 
 function Presentacion() {
   return (
-    <section className="grid grid-cols-7 grid-rows-2 gap-10 bg-red-200 h-100 p-[20px]">
+    <section className="grid grid-cols-7 grid-rows-2 gap-3 bg-red-200 h-100 p-[20px]">
       <Imagen src="#" alt="Ilustrativa" rows="1" columns="2" />
       <Imagen src="#" alt="Ilustrativa" rows="2" columns="1" />
       <Imagen src="#" alt="Ilustrativa" rows="1" columns="1" />
@@ -37,16 +37,14 @@ function Presentacion() {
   );
 }
 
-function Imagen({ src, alt, link, rows, columns }) {
-  const clases = [
-    "bg-black",
-    columns && `col-span-[${columns}]`,
-    rows && `row-span-[${rows}]`,
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  const image = <img src={src} alt={alt} className={clases} />;
+function Imagen({ src, alt, link, rows = "1", columns = "1" }) {
+  const image = (
+    <img
+      src={src}
+      alt={alt}
+      className={`bg-black col-span-[${columns}] row-span-[${rows}]`}
+    />
+  );
 
   return link ? <a href={link}>{image}</a> : image;
 }
